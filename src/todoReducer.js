@@ -1,5 +1,6 @@
-const {expect} = require('expect');
-const {deepFreeze} = require('deep-freeze');
+const deepFreeze = require('deepFreeze'); 
+const expect = require('expect');
+const Redux = require('redux');
 
 const todo = (state, action) => {
     switch(action.type){
@@ -29,10 +30,7 @@ const todos = (state = [], action) => {
     }
 }
 
-const visibilityFilter = (
-    state = 'SHOW_ALL',
-    action
-) => {
+const visibilityFilter = (state = 'SHOW_ALL', action) => {
     switch (action.type) {
         case 'SET_VISIBILITY_FILTER':
             return action.filter;
@@ -48,18 +46,26 @@ const visibilityFilter = (
 //     visibilityFilter: visibilityFilter
 // })
 
-// const todoApp = (state = {}, action) => {
-//     return {
-//         todos: todos(
-//             state.todos,
-//             action
-//         ),
-//         visibilityFilter: visibilityFilter(
-//             state.visibilityFilter,
-//             action
-//         )
-//     };
-// };
+
+const render = () => {
+    
+}
+
+const todoApp = (state = {}, action) => {
+    return {
+        todos: todos(
+            state.todos,
+            action
+        ),
+        visibilityFilter: visibilityFilter(
+            state.visibilityFilter,
+            action
+        )
+    };
+};
+
+const {createStore} = Redux;
+const store = createStore(todoApp);
 
 const testAddTodo = () => {
     const stateBefore = [];
@@ -75,11 +81,10 @@ const testAddTodo = () => {
         completed: false
     }];
 
-    // deepFreeze(stateBefore);
-    // deepFreeze(action);
+    deepFreeze(stateBefore);
+    deepFreeze(action);
 
-    // expect(todos(stateBefore,action)
-    // ).toEqual(stateAfter);
+    expect(todos(stateBefore,action)).toEqual(stateAfter);
 };
 
 const testToggleTodo = () => {
@@ -108,10 +113,10 @@ const testToggleTodo = () => {
         completed: true
     }];
 
-    // deepFreeze(stateBefore);
-    // deepFreeze(action);
+    deepFreeze(stateBefore);
+    deepFreeze(action);
 
-    // expect(todos(stateBefore,action)).toEqual(stateAfter);
+    expect(todos(stateBefore,action)).toEqual(stateAfter);
 };
 
 testAddTodo();
