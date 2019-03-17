@@ -46,6 +46,22 @@ const visibilityFilter = (state = 'SHOW_ALL', action) => {
 //     visibilityFilter: visibilityFilter
 // })
 
+//TODO: need to understand combineReducers implementation
+const combineReducers = (reducers) =>{
+    return (state = {}, action) =>{
+        return Object.keys(reducers).reduce(
+            (nextState, key) => {
+                nextState[key] = reducers[key](
+                    state[key],
+                    action
+                );
+                return nextState;
+            },
+            {}
+        );
+    };
+};
+
 
 const render = () => {
     

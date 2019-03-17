@@ -1,6 +1,3 @@
-//TODO: implement createStore
-//const {createStore} = require('redux');
-
 const createStore = (reducer) => {
     let state;
     let listeners = [];
