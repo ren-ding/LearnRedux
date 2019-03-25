@@ -1,5 +1,3 @@
-const deepFreeze = require('deepFreeze'); 
-const expect = require('expect');
 const Redux = require('redux');
 
 const todo = (state, action) => {
