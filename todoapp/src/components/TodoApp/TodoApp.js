@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import store from './store'
+import store from '../../store/store'
 
 let nextTodoId = 0;
 const FilterLink = ({
@@ -39,6 +39,8 @@ const getVisibleTodos = (
             return todos.filter(
                 todo => !todo.completed
             );
+        default:
+            return todos;
     }
 }
 

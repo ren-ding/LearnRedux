@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import TodoApp from './components/TodoApp/TodoApp';
 import * as serviceWorker from './serviceWorker';
-import store from './components/store'
+import store from './store/store'
 
 const render = () => {
-    ReactDOM.render(<App />, document.getElementById('root'));
+    ReactDOM.render(<TodoApp {...store.getState()}/>, document.getElementById('root'));
 }
 
 store.subscribe(render);

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoApp render should render match with snapshot 1`] = `
+<div>
+  <div>
+    <input />
+    <button
+      onClick={[Function]}
+    >
+      Add Todo
+    </button>
+  </div>
+  <ul />
+  <p>
+    Show:
+     
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      All
+    </a>
+     
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Active
+    </a>
+     
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Completed
+    </a>
+  </p>
+</div>
+`;

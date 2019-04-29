@@ -1,5 +1,5 @@
 import {createStore, combineReducers} from 'redux'
-import {todos, visibilityFilter} from './reducer'
+import {todos, visibilityFilter} from '../reducer/reducer'
 
 const todoApp = combineReducers({
     todos: todos,
