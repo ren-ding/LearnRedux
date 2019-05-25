@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StoreContext} from '../../store/store'
+import {StoreContext} from '../../store/store';
 
 const Link = ({
     active,

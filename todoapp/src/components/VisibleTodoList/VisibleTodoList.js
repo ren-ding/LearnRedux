@@ -14,7 +14,6 @@ class VisibleTodoList extends Component {
     }
 
     render() {
-        const props = this.props;
         const {store} = this.context;
         const state = store.getState();
 

@@ -1,14 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FilterLink from '../FilterLink'
+import FilterLink from '../FilterLink';
+import {store} from '../../../store/store';
 
 describe('FilterLink',()=>{ 
     let props;
 
     beforeEach(()=>{
         props = {
-            todos:[],
-            visibilityFilter:''
+            store: store
         }
     });
 

@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoApp from './components/TodoApp/TodoApp';
 import * as serviceWorker from './serviceWorker';
-import {StoreContext, store} from './store/store'
+import {store} from './store/store'
+import {Provider} from 'react-redux';
 
 ReactDOM.render(
-    <StoreContext.Provider value = {{store:store}}>
+    <Provider store = {store}>
         <TodoApp />
-    </StoreContext.Provider>,
+    </Provider>,
     document.getElementById('root')
 );
 

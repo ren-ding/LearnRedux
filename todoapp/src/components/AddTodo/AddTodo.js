@@ -1,12 +1,12 @@
 import React from 'react';
-import {StoreContext} from '../../store/store'
+import {ReactReduxContext} from 'react-redux'
 
 let nextTodoId = 0;
 
 const AddTodo = () => {
     let input;
     return (
-        <StoreContext.Consumer>
+        <ReactReduxContext.Consumer>
             {({store}) =>
                 (<div>
                     <input ref={ node => {
@@ -27,7 +27,7 @@ const AddTodo = () => {
                 )
             }
         
-        </StoreContext.Consumer>
+        </ReactReduxContext.Consumer>
     );
 };
 
