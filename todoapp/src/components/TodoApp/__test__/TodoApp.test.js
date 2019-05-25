@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import TodoApp from '../TodoApp';
-import {store} from '../../../store/store';
+import store from '../../../store/store';
 import {Provider} from 'react-redux';
 
 describe('TodoApp',()=>{

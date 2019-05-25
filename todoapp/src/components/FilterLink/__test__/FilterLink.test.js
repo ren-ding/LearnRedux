@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import FilterLink from '../FilterLink';
-import {store} from '../../../store/store';
+import store from '../../../store/store';
 
 describe('FilterLink',()=>{ 
     let props;

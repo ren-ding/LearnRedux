@@ -1,10 +1,17 @@
-import React from 'react';
 import {createStore} from 'redux'
 import todoApp from '../reducer/reducer'
 
-const store = createStore(todoApp);
-const StoreContext = React.createContext({
-    store: store
-});
+// const persistedState = {
+//     todos: [{
+//         id:'0',
+//         text:'Welcome back',
+//         completed: false
+//     }]
+// };
 
-export {store, StoreContext};
+const store = createStore(
+    todoApp,
+    //persistedState
+);
+
+export default store;
