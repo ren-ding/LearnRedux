@@ -14,12 +14,9 @@ exports[`TodoApp render should render match with snapshot 1`] = `
   <p>
     Show:
      
-    <a
-      href="#"
-      onClick={[Function]}
-    >
+    <span>
       All
-    </a>
+    </span>
      
     <a
       href="#"

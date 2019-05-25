@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTodo render should render match with snapshot 1`] = `
+<div>
+  <input />
+  <button
+    onClick={[Function]}
+  >
+    Add Todo
+  </button>
+</div>
+`;

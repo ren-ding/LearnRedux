@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import TodoApp from '../TodoApp'
+import AddTodo from '../AddTodo'
 
-describe('TodoApp',()=>{
+describe('AddTodo',()=>{ 
     describe('render',()=>{
         it('should render match with snapshot',()=> {
-            const tree = renderer.create(<TodoApp />).toJSON();
+            const tree = renderer.create(<AddTodo />).toJSON();
             expect(tree).toMatchSnapshot();
         });
     });
