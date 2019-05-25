@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import store from '../../store/store';
+import {StoreContext} from '../../store/store'
 
 const Link = ({
     active,
@@ -23,6 +23,7 @@ const Link = ({
 
 class FilterLink extends Component {
     componentDidMount() {
+        const {store} = this.context;
         this.unsubscribe = store.subscribe(()=>
             this.forceUpdate()
         );
@@ -34,6 +35,7 @@ class FilterLink extends Component {
 
     render() {
         const props = this.props;
+        const {store} = this.context;
         const state = store.getState();
         return (
             <Link
@@ -52,3 +54,5 @@ class FilterLink extends Component {
 }
 
 export default FilterLink;
+
+FilterLink.contextType = StoreContext;

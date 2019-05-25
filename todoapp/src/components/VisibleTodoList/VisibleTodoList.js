@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import store from '../../store/store';
+import {StoreContext} from '../../store/store'
 
 class VisibleTodoList extends Component {
     componentDidMount() {
+        const {store} = this.context;
         this.unsubscribe = store.subscribe(()=>
             this.forceUpdate()
         );
@@ -14,6 +15,7 @@ class VisibleTodoList extends Component {
 
     render() {
         const props = this.props;
+        const {store} = this.context;
         const state = store.getState();
 
         return (
@@ -34,6 +36,7 @@ class VisibleTodoList extends Component {
         );
     }
 }
+
 
 const getVisibleTodos = (
     todos,
@@ -86,3 +89,5 @@ const TodoList = ({
 );
 
 export default VisibleTodoList;
+
+VisibleTodoList.contextType = StoreContext;

@@ -1,11 +1,10 @@
-import {createStore, combineReducers} from 'redux'
-import {todos, visibilityFilter} from '../reducer/reducer'
-
-const todoApp = combineReducers({
-    todos: todos,
-    visibilityFilter: visibilityFilter
-  })
+import React from 'react';
+import {createStore} from 'redux'
+import todoApp from '../reducer/reducer'
 
 const store = createStore(todoApp);
+const StoreContext = React.createContext({
+    store: store
+});
 
-export default store;
+export {store, StoreContext};
