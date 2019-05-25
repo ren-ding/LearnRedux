@@ -1,14 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import VisibleTodoList from '../VisibleTodoList'
+import VisibleTodoList from '../VisibleTodoList';
+import {store} from '../../../store/store';
 
 describe('VisibleTodoList',()=>{ 
     let props;
 
     beforeEach(()=>{
         props = {
-            todos:[],
-            visibilityFilter:''
+            store: store
         }
     });
 

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {StoreContext} from '../../store/store';
+import React from 'react';
+import {connect} from 'react-redux'
 
 const Link = ({
     active,
@@ -21,38 +21,33 @@ const Link = ({
     );
 };
 
-class FilterLink extends Component {
-    componentDidMount() {
-        const {store} = this.context;
-        this.unsubscribe = store.subscribe(()=>
-            this.forceUpdate()
-        );
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
-    render() {
-        const props = this.props;
-        const {store} = this.context;
-        const state = store.getState();
-        return (
-            <Link
-                active = {props.filter === state.visibilityFilter}
-                onClick = {() => {
-                    store.dispatch({
-                        type: 'SET_VISIBILITY_FILTER',
-                        filter: props.filter
-                    });
-                }}
-            >
-                {props.children}
-            </Link>
-        );
+const mapStateToLinkProps = (
+    state,
+    ownProps
+) => {
+    return {
+        active: ownProps.filter === state.visibilityFilter
     }
 }
 
-export default FilterLink;
+const mapDispatchToProps = (
+    dispatch,
+    ownProps
+) => {
+    return {
+        onClick: () => {
+            dispatch({
+                type: 'SET_VISIBILITY_FILTER',
+                filter: ownProps.filter
+            });
+        }
+    }
+}
 
-FilterLink.contextType = StoreContext;
+const FilterLink = connect(
+    mapStateToLinkProps,
+    mapDispatchToProps
+)(Link);
+
+
+export default FilterLink;

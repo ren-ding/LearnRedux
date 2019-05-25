@@ -1,41 +1,5 @@
-import React, {Component} from 'react';
-import {StoreContext} from '../../store/store'
-
-class VisibleTodoList extends Component {
-    componentDidMount() {
-        const {store} = this.context;
-        this.unsubscribe = store.subscribe(()=>
-            this.forceUpdate()
-        );
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
-    render() {
-        const {store} = this.context;
-        const state = store.getState();
-
-        return (
-            <TodoList
-                todos = {
-                    getVisibleTodos(
-                        state.todos,
-                        state.visibilityFilter
-                    )
-                }
-                onTodoClick = {id =>{
-                    store.dispatch({
-                        type: 'TOGGLE_TODO',
-                        id
-                    });
-                }}
-            />
-        );
-    }
-}
-
+import React from 'react';
+import {connect} from 'react-redux';
 
 const getVisibleTodos = (
     todos,
@@ -87,6 +51,33 @@ const TodoList = ({
     </ul>
 );
 
-export default VisibleTodoList;
+const mapStateToTodoListProps = (
+    state
+) => {
+    return {
+        todos: getVisibleTodos(
+            state.todos,
+            state.visibilityFilter
+        )
+    }
+};
 
-VisibleTodoList.contextType = StoreContext;
+const mapDispatchToTodoListProps = (
+    dispatch
+) => {
+    return {
+        onTodoClick : (id) => {
+            dispatch({
+                type: 'TOGGLE_TODO',
+                id
+            });
+        }
+    }
+};
+
+const VisibleTodoList = connect(
+    mapStateToTodoListProps,
+    mapDispatchToTodoListProps
+)(TodoList);
+
+export default VisibleTodoList;

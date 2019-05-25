@@ -1,34 +1,30 @@
 import React from 'react';
-import {ReactReduxContext} from 'react-redux'
+import {connect} from 'react-redux'
 
 let nextTodoId = 0;
 
-const AddTodo = () => {
+let AddTodo = ({dispatch}) => {
     let input;
     return (
-        <ReactReduxContext.Consumer>
-            {({store}) =>
-                (<div>
-                    <input ref={ node => {
-                        input = node;
-                    }}
-                    />
-                    <button onClick= {()=>{
-                        store.dispatch({
-                            type:'ADD_TODO',
-                            id: nextTodoId++,
-                            text: input.value
-                        })
-                        input.value='';
-                    }}>
-                    Add Todo
-                    </button>
-                 </div>
-                )
-            }
-        
-        </ReactReduxContext.Consumer>
+        <div>
+            <input ref={ node => {
+                input = node;
+            }}
+            />
+            <button onClick= {()=>{
+                dispatch({
+                    type:'ADD_TODO',
+                    id: nextTodoId++,
+                    text: input.value
+                })
+                input.value='';
+            }}>
+            Add Todo
+            </button>
+        </div>
     );
 };
+
+AddTodo = connect()(AddTodo);
 
 export default AddTodo;
