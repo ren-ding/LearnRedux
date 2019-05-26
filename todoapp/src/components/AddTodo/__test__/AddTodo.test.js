@@ -1,14 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import AddTodo from '../AddTodo';
-import store from '../../../store/store';
+import configureStore from '../../../configureStore';
 
 describe('AddTodo',()=>{ 
     let props;
 
     beforeEach(()=>{
         props = {
-            store: store
+            store: configureStore()
         }
     });
 
