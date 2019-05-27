@@ -2,7 +2,15 @@
 
 exports[`FilterLink render should render match with snapshot 1`] = `
 <a
-  href="#"
+  aria-current="page"
+  className="active"
+  href="/"
   onClick={[Function]}
+  style={
+    Object {
+      "color": "black",
+      "textDecoration": "none",
+    }
+  }
 />
 `;

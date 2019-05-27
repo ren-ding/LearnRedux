@@ -14,19 +14,32 @@ exports[`TodoApp render should render match with snapshot 1`] = `
   <p>
     Show:
      
-    <span>
+    <a
+      aria-current="page"
+      className="active"
+      href="/"
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "black",
+          "textDecoration": "none",
+        }
+      }
+    >
       All
-    </span>
+    </a>
      
     <a
-      href="#"
+      aria-current={null}
+      href="/active"
       onClick={[Function]}
     >
       Active
     </a>
      
     <a
-      href="#"
+      aria-current={null}
+      href="/completed"
       onClick={[Function]}
     >
       Completed

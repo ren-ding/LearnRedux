@@ -1,10 +1,13 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import TodoApp from '../TodoApp/TodoApp';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 const Root = ({store}) => (
     <Provider store = {store}>
-        <TodoApp />
+        <BrowserRouter >
+            <Route path='/:filter?' render={props => <TodoApp {...props} />} />
+        </BrowserRouter >
     </Provider>
 )
 
