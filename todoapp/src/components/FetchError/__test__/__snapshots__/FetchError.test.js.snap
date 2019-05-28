@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FetchError render should render match with snapshot 1`] = `
+<div>
+  <p>
+    Could not fetch todos. 
+    
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Retry
+  </button>
+</div>
+`;
