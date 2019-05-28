@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VisibleTodoList render should render match with snapshot 1`] = `<ul />`;
+exports[`VisibleTodoList render should render match with snapshot 1`] = `
+<p>
+  Loading...
+</p>
+`;

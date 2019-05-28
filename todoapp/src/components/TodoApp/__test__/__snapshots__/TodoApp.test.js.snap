@@ -10,7 +10,9 @@ exports[`TodoApp render should render match with snapshot 1`] = `
       Add Todo
     </button>
   </div>
-  <ul />
+  <p>
+    Loading...
+  </p>
   <p>
     Show:
      
