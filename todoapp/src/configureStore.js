@@ -1,40 +1,47 @@
-import {createStore} from 'redux'
-import todoApp from './reducer/index'
+import {createStore, applyMiddleware} from 'redux'
+import todoApp from './reducer/index';
+import promise from 'redux-promise';
+import {createLogger} from 'redux-logger';
 
-// const persistedState = {
-//     todos: [{
-//         id:'0',
-//         text:'Welcome back',
-//         completed: false
-//     }]
+// const logger = (store) =>  (next) => {
+//     if(!console.group) return next;
+
+//     return (action) => {
+//         console.group(action.type);
+//         console.log('%c prev state', 'color:gray', store.getState());
+//         console.log('%c action','color:blue',action);
+//         const returnValue = next(action);
+//         console.log('%c next state','color:green', store.getState());
+//         console.groupEnd(action.type);
+//         return returnValue;
+//     };
 // };
 
-const addLoggingToDispatch = (store) => {
-    const rawDispatch = store.dispatch;
-    if(!console.group) return rawDispatch;
+// const promise = (store) => (next) => (action) => {
+//     if(typeof action.then === 'function') {
+//         return action.then(next);
+//     }
+//     return next(action);
+// };
 
-    return (action) => {
-        console.group(action.type);
-        console.log('prev state', 'color:gray', store.getState());
-        console.log('action','color:blue',action);
-        const returnValue = rawDispatch(action);
-        console.log('next state','color:green', store.getState());
-        console.groupEnd(action.type);
-        return returnValue;
-    };
-};
+// const wrapDispatchWithMiddlewares = (store, middlewares) => {
+//     middlewares.slice().reverse().forEach( middleware => {
+//         store.dispatch = middleware(store)(store.dispatch);
+//     })
+// };
 
 const configureStore = () => {
-    const store = createStore(
-        todoApp,
-        //persistedState
-    );
-
+    const middlewares = [promise];
     if(process.env.NODE_ENV !== 'production') {
-        store.dispatch = addLoggingToDispatch(store);
+        middlewares.push(createLogger());
     }
 
-    return store;
-}
+    return createStore(
+        todoApp,
+        applyMiddleware(...middlewares)
+    );
+    //wrapDispatchWithMiddlewares(store, middlewares);
+
+};
 
 export default configureStore;
